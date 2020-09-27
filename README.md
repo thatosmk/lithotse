@@ -63,5 +63,8 @@ usable for humans for speed and query capabilities. The recommended cache option
 * Redis for fast operations on in-memory data sets, or
 * Neptune for graph queries
 
-### Operation
+### Backend
+
+The backend of this platform will be mainly Ruby, that is, ruby APIs handling data capturing and persistance on to
+chosen layers of databases.
 
