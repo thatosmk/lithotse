@@ -1,5 +1,6 @@
 # Lithotse
 
+![Build](https://github.com/thatosmk/lithotse/workflows/Build/badge.svg)
 This is a data aggregator for health records
 
 ## What is data aggregation
@@ -67,4 +68,14 @@ usable for humans for speed and query capabilities. The recommended cache option
 
 The backend of this platform will be mainly Ruby, that is, ruby APIs handling data capturing and persistance on to
 chosen layers of databases.
+
+* API Endpoints
+
+- ``` GET /patients```
+
+Returns all the patients
+
+- ``` GET /patients/:id```
+
+Returns a patient with id
 
