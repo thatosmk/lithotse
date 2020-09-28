@@ -46,23 +46,13 @@ With data coming into the first tier, as soon as a file lands in tier 1 build mu
 Multiple is a keyword in this case since every analysis is looking at the data from a  different angle and for a
 different business need, and eventually, it is developed by a different team.
 
-The transformations of the data from its raw form toward an analytical insight allow tremendous optimization
-opportunities. Taking JSON data and storing it in a format that is both columnar and compressed.
-
 The data in this tier is mostly aggregated, filtered, or transformed from it original raw form to fit a specific
-business question. If I need to predict the daily sales of a brand, I don’t need to analyze every individual purchase
-for every unique product. I can look at daily and brand aggregation. Also, we should not be too afraid to make the
-derivative **too specific** since we still have the raw data in tier 1.
+business question. 
 
 ### Tier 3 (L3) - Optional cache data stores
 
 To allow users' interactions with the results of the data analytics, we often need to cache these results to make them
-usable for humans for speed and query capabilities. The recommended cache options are:
-
-* DynamoDB for GraphQL access from a different application,
-* ElasticSearch for textual queries
-* Redis for fast operations on in-memory data sets, or
-* Neptune for graph queries
+usable for humans for speed and query capabilities. We use *Redis* for fast operations on in-memory data sets, or
 
 ### Backend
 
