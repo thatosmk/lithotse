@@ -2,6 +2,7 @@
 
 class Patient
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :id_number, type: String
   field :first_name, type: String
@@ -16,4 +17,6 @@ class Patient
 
   index({ id_number: 'text' }, { unique: true })
   index({ email: 'text' }, { unique: true })
+
+  has_many :health_records
 end

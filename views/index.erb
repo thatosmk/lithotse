@@ -1,0 +1,89 @@
+<div class="container">
+  <h1 class="text-center pt-5 pb-3"> Welcome to EHR</h1>
+
+  <div class="row">
+    <div class="pt-4 col-md-10">
+      <div class="d-flex flex-md-row flex-column bd-highlight">
+        <div class="bd-highlight mr-3">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Department 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownButton">
+              <% departments.each do |d|%>
+                <a class="dropdown-item" href="/?department=<%= "#{d.name}"%>"><%= "#{d.name}" %></a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="bd-highlight pt-2 w-25">
+          <p>
+            <strong>
+            <%= "#{records.count}" %>
+            </strong>
+            <span class="text-muted">
+              records
+            </span>
+          </p>
+        </div>
+        <div class="bd-highlight ml-5 w-100">
+          <form class="form-inline" url="/">
+            <label class="sr-only" for="inlineFormInputName2">Name</label>
+            <input type="text" name="id_number" params="id_number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Search ID number...">
+
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
+        </div>
+        <div class="bd-highlight ml-1" style="width: 40% !important;">
+            <button class="btn btn-outline-success" type="button">
+            new patient 
+            </button>
+        </div>
+      </div>
+      <div class="pt-2">
+        <div class="card">
+            <% if records.count < 1 %>
+              <div class="alert alert-info text-center" role="alert">
+                No health records here yet
+              </div>
+            <% else %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>ID num</th>
+                    <th>Notes</th>
+                    <th>Examiner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% records.each do |p|%>
+                  <tr>
+                      <td><%= p.id.to_s.truncate(10) %></td>
+                      <td><a href="/?id_number=<%= "#{p.id_number}"%>"><%= p.id_number %></a></td>
+                      <td><%= p.notes %></td>
+                      <td><%= p.examiner %></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 pt-4">
+      <h5 class="pt-5">Patient information</h5>
+      <% if !patient.nil? %>
+      <p>Name:</p>
+      <p class="lead">
+        <%= patient.first_name %>
+        <%= patient.last_name %>
+      </p>
+      <p>ID number:</p>
+      <p class="lead">
+        <%= patient.id_number %>
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>

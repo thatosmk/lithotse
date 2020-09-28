@@ -4,6 +4,10 @@ def base_url
   @base_url ||= "#{request.env['rack.url_scheme']}://{request.env['HTTP_HOST']}"
 end
 
+def record_params
+  JSON.parse(request.body.read)
+end
+
 def patient_params
   begin
     case request.content_type

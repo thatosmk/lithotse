@@ -69,7 +69,7 @@ usable for humans for speed and query capabilities. The recommended cache option
 The backend of this platform will be mainly Ruby, that is, ruby APIs handling data capturing and persistance on to
 chosen layers of databases.
 
-* API Endpoints
+#### API Endpoints
 
 - ``` GET /patients```
 

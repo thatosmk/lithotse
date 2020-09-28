@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="text-center pt-5 pb-3">Insights</h1>
+  <div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    View as (role) 
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownButton">
+      <% roles.each do |d|%>
+        <a class="dropdown-item" href="/insights?role=<%= "#{d}"%>"><%= "#{d}" %></a>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex flex-md-row flex-column bd-highlight">
+    <div class="bd-highlight w-100">
+      <h3>Patient wait time</h3>
+    </div>
+    <div class="bd-highlight w-100">
+      <h3></h3>
+    </div>
+  </div>
+</div>
+
