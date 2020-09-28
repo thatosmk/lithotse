@@ -6,12 +6,20 @@ require 'sinatra/namespace'
 require 'mongoid'
 require './models/patient'
 require './models/department'
+require './models/aggs'
 require './models/health_record'
 require './helpers/api_helper'
+require './helpers/aggregator'
 
 
 # DB Setup
 Mongoid.load!(File.join(File.dirname(__FILE__), 'config', 'mongoid.yml'))
+
+set :public_folder, __dir__ + '/static'
+
+before do
+  headers  "Access-Control-Allow-Headers" => "origin, x-requested-with, content-type"
+end
 
 # Endpoints
 get '/' do
@@ -28,11 +36,13 @@ get '/' do
 end
 
 get '/insights' do
-  @departments = Department.all
-  @roles = %w[Operations Internal Care Emergency Communications Finance]
+  @ag = Aggregator::Consolidate.new
   if params['role']
+    @aggs = Agg.where(role: "#{params['role']}").all
+  else
+    @aggs = Agg.all
   end
-  erb :insights, locals: { roles: @roles, departments: @departments, patient: @patient }
+  erb :insights, locals: { roles: @ag.roles, records: @aggs, patient: @patient }
 end
 
 namespace '/api/v1' do

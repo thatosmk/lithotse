@@ -52,6 +52,7 @@
                   <tr>
                     <th>id</th>
                     <th>ID num</th>
+                    <th>department_id</th>
                     <th>Notes</th>
                     <th>Examiner</th>
                   </tr>
@@ -61,6 +62,7 @@
                   <tr>
                       <td><%= p.id.to_s.truncate(10) %></td>
                       <td><a href="/?id_number=<%= "#{p.id_number}"%>"><%= p.id_number %></a></td>
+                      <td><%= p.department_id %></td>
                       <td><%= p.notes %></td>
                       <td><%= p.examiner %></td>
                   </tr>

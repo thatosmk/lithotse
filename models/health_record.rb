@@ -11,12 +11,16 @@ class HealthRecord
   field :id_number, type: String
   field :notes, type: String
   field :examiner, type: String
+  field :diagnosis, type: String
+  field :weight, type: String
+  field :temperature, type: String
+  field :appointment_time, type: String
 
   index({ id_number: 'text' }, { unique: false })
 
   belongs_to :department
 
   after_save do |document|
-    Aggregator::Consolidate.update_patient(document)
+    Aggregator::Consolidate.update(document)
   end
 end

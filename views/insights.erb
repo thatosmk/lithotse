@@ -11,12 +11,48 @@
     </div>
   </div>
   <div class="d-flex flex-md-row flex-column bd-highlight">
-    <div class="bd-highlight w-100">
-      <h3>Patient wait time</h3>
+    <div class="bd-highlight py-5 w-100">
+      <div class="card card-body text-center mr-1">
+      <h1 class="text-muted">Charts</h1>
+      </div>
     </div>
-    <div class="bd-highlight w-100">
-      <h3></h3>
+    <div class="bd-highlight py-5 w-100 ml-1">
+      <div class="card card-body text-center">
+        <h1 class="text-muted">Charts</h1>
+      </div>
     </div>
   </div>
+  <div class="card">
+    <% if records.count < 1 %>
+      <div class="alert alert-info text-center" role="alert">
+        No data here yet
+      </div>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>role</th>
+            <th>department</th>
+            <th>date</th>
+            <th>weight</th>
+            <th>temp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% records.each do |p|%>
+          <tr>
+              <td><%= p.id.to_s.truncate(10) %></td>
+              <td><%= p.department %></td>
+              <td><%= p.date %></td>
+              <td><%= p.weight %></td>
+              <td><%= p.temp %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+    <h3>Patient wait time</h3>
 </div>
 

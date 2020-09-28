@@ -9,3 +9,5 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'mongoid'
 gem 'rspec'
+gem 'faker'
+gem "chartkick"
